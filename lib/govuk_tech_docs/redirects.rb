@@ -1,6 +1,11 @@
+require "govuk_tech_docs/path_helpers"
+require "ostruct"
+
 module GovukTechDocs
   class Redirects
-    LEADING_SLASH = %r{\A/}.freeze
+    include GovukTechDocs::PathHelpers
+
+    LEADING_SLASH = %r{\A/}
 
     def initialize(context)
       @context = context
@@ -11,7 +16,7 @@ module GovukTechDocs
 
       all_redirects.map do |from, to|
         # Middleman needs paths without leading slashes
-        [from.sub(LEADING_SLASH, ""), { to: to.sub(LEADING_SLASH, "") }]
+        [from.sub(LEADING_SLASH, ""), { to: get_path_to_resource(@context.config, to.sub(LEADING_SLASH, ""), from.sub(LEADING_SLASH, "")) }]
       end
     end
 
