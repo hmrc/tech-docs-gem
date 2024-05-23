@@ -5,7 +5,7 @@ module GovukTechDocs
   class Redirects
     include GovukTechDocs::PathHelpers
 
-    LEADING_SLASH = %r{\A/}.freeze
+    LEADING_SLASH = %r{\A/}
 
     def initialize(context)
       @context = context
