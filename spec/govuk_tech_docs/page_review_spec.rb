@@ -13,7 +13,7 @@ RSpec.describe GovukTechDocs::PageReview do
   describe "#owner_slack_url" do
     it "is blank when no workspace is configured" do
       review_by = described_class.new(
-        double(data: double(owner_slack: "@foo")),
+        double(data: double(owner_slack: "@foo", display_slack: nil)),
         tech_docs: {},
       )
 
@@ -22,7 +22,7 @@ RSpec.describe GovukTechDocs::PageReview do
 
     it "links to Slack usernames" do
       review_by = described_class.new(
-        double(data: double(owner_slack: "@foo")),
+        double(data: double(owner_slack: "@foo", display_slack: nil)),
         tech_docs: { owner_slack_workspace: "govuk" },
       )
 
@@ -31,7 +31,7 @@ RSpec.describe GovukTechDocs::PageReview do
 
     it "links to Slack channels" do
       review_by = described_class.new(
-        double(data: double(owner_slack: "#foo")),
+        double(data: double(owner_slack: "#foo", display_slack: nil)),
         tech_docs: { owner_slack_workspace: "govuk" },
       )
 

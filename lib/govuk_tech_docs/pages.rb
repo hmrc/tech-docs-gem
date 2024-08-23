@@ -23,6 +23,7 @@ module GovukTechDocs
           url: get_path_to_resource(@config, page, @current_page).to_s,
           review_by: review.review_by,
           owner_slack: review.owner_slack,
+          display_slack: review.display_slack,
         }
       end
     end

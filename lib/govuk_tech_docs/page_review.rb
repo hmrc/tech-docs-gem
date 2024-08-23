@@ -28,11 +28,19 @@ module GovukTechDocs
       page.data.owner_slack || default_owner_slack
     end
 
+    def display_slack
+      page.data.display_slack || nil
+    end
+
+    def slack_to_display
+      display_slack || owner_slack
+    end
+
     def owner_slack_url
       return "" unless owner_slack_workspace
 
       # Slack URLs don't have the # (channels) or @ (usernames)
-      slack_identifier = owner_slack.to_s.delete("#").delete("@")
+      slack_identifier = slack_to_display.to_s.delete("#").delete("@")
       "https://#{owner_slack_workspace}.slack.com/messages/#{slack_identifier}"
     end
 
@@ -45,7 +53,6 @@ module GovukTechDocs
     end
 
   private
-
     def default_owner_slack
       @config[:tech_docs][:default_owner_slack]
     end
