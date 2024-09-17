@@ -25,7 +25,7 @@
 
   <body class="govuk-template__body">
     <%= partial 'layouts/google_tag_manager_non_js' %>
-    <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
 
     <div class="app-pane">
       <div class="app-pane__header toc-open-disabled">
@@ -77,6 +77,7 @@
     </div>
 
     <%= partial 'layouts/analytics' %>
+    <%= javascript_include_tag :govuk_frontend, :type => "module" %>
     <%= javascript_include_tag :application %>
   </body>
 </html>
