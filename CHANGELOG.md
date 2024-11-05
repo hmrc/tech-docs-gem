@@ -1,6 +1,30 @@
-# Changelog
-
 ## Unreleased
+
+## 4.1.0
+
+- [Fix missing manifest.json from govuk-frontend](https://github.com/alphagov/tech-docs-gem/pull/376)
+- [Stable soft for left navigation](https://github.com/alphagov/tech-docs-gem/pull/374)
+
+## 4.0.0
+
+### Breaking
+- BREAKING: drop support for end-of-life Ruby versions 2.7 and 3.0. The minimum Ruby version is now 3.1.
+- BREAKING: drop support for IE8
+- Upgrade to govuk-frontend v5.7.1 and introduce new Javascript entry point
+
+To upgrade you need to:
+  - create a `govuk_frontend.js` file your project’s `source/assets/javascripts` directory
+  - add `//= require govuk_frontend_all` into it
+
+### Fixes
+
+- Update gem dependencies.
+- Declare some missing indirect dependencies to prepare for Ruby 3.4. This also resolves some warnings about this at build time.
+- Remove aria-hidden from search label to let assistive technologies see its accessible name
+- Use hidden attribute to show/hide expiry notices instead of just CSS
+- Only use dialog role for table of contents when it behaves like one (accessibility fix)
+- Prevent interactive elements being obscured by sticky table of contents header
+- Only wrap images with alt text in hyperlinks
 
 ## 3.5.0
 

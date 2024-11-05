@@ -6,21 +6,26 @@
     "lint": "standard"
   },
   "dependencies": {
-    "govuk-frontend": "~4.7.0"
+    "govuk-frontend": "~5.7.1"
   },
   "devDependencies": {
     "standard": "^14.3.4"
   },
   "standard": {
     "globals": [
+      "jasmine",
       "describe",
       "before",
       "after",
       "beforeEach",
       "afterEach",
+      "beforeAll",
       "it",
       "assert",
       "expect",
+      "Document",
+      "Element",
+      "Event",
       "GOVUK",
       "lunr",
       "$",

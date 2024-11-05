@@ -12,18 +12,33 @@ module GovukTechDocs
 
       def single_page_table_of_contents(html, url: "", max_level: nil)
         output = "<ul>\n"
-        output += list_items_from_headings(html, url: url, max_level: max_level)
+        output += list_items_from_headings(html, url:, max_level:)
         output += "</ul>\n"
 
         output
       end
 
+      # Items with a weight appear first, in weight order
+      #   if items have equal weight, they stay in the order they appeared (stable sort)
+      # Items without a weight appear after, sorted stably in the order that they are
+      # present in the resource list
+      def sort_resources_stably(resources)
+        resources
+          .each.with_index
+          .sort_by { |r, index| [r.data.weight ? 0 : 1, r.data.weight || 0, index] }
+          .map(&:first)
+          .to_a
+      end
+
+      def select_top_level_html_files(resources)
+        resources
+          .select { |r| r.path.end_with?(".html") && (r.parent.nil? || r.parent.url == "/") }
+      end
+
       def multi_page_table_of_contents(resources, current_page, config, current_page_html = nil)
-        # Only parse top level html files
-        # Sorted by weight frontmatter
-        resources = resources
-        .select { |r| r.path.end_with?(".html") && (r.parent.nil? || r.parent.url == "/") }
-        .sort_by { |r| [r.data.weight ? 0 : 1, r.data.weight || 0] }
+        resources = sort_resources_stably(
+          select_top_level_html_files(resources),
+        )
 
         render_page_tree(resources, current_page, config, current_page_html)
       end
@@ -36,13 +51,11 @@ module GovukTechDocs
         end
 
         tree = HeadingTreeBuilder.new(headings).tree
-        HeadingTreeRenderer.new(tree, max_level: max_level).html
+        HeadingTreeRenderer.new(tree, max_level:).html
       end
 
       def render_page_tree(resources, current_page, config, current_page_html)
-        # Sort by weight frontmatter
-        resources = resources
-        .sort_by { |r| [r.data.weight ? 0 : 1, r.data.weight || 0] }
+        resources = sort_resources_stably(resources)
 
         output = "<ul>\n"
         resources.each do |resource|
