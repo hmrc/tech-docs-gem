@@ -1,3 +1,22 @@
+## 4.4.0
+
+### New features
+
+- [Use the service link as the start of the path to the favicon images if required](https://github.com/alphagov/tech-docs-gem/pull/399)
+
+To use the service_link at the start of the path to the favicon images, you need to
+- set `use_service_link_for_favicon: true`
+
+## 4.3.1
+
+- Revert [Fix: Use the service link as the start of the path to the favicon images](https://github.com/alphagov/tech-docs-gem/pull/391)
+
+## 4.3.0
+
+- [Bump govuk-frontend to v5.9.0 and pin middleman to v4.5.1](https://github.com/alphagov/tech-docs-gem/pull/390)
+
+- [Fix: Update Rack::File to Rack::Files in test specs](https://github.com/alphagov/tech-docs-gem/pull/394)
+
 ## 4.2.0
 
 ## New features
