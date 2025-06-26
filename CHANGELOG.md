@@ -1,5 +1,18 @@
 ## Unreleased
 
+## 5.0.2
+
+### Fixes
+
+- [Fix copy of manifest.json into build](https://github.com/alphagov/tech-docs-gem/pull/423)
+
+## 5.0.1
+
+### Fixes
+
+- [Update logo SVG in header](https://github.com/alphagov/tech-docs-gem/pull/418)
+- [Update path to GOV.UK Frontend assets when using GOV.UK logo](https://github.com/alphagov/tech-docs-gem/pull/419)
+
 ## 5.0.0
 
 ### Breaking
