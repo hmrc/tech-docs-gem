@@ -1,29 +1,26 @@
-// Header search styles and overrides
-// This file contains styles for moving the search to the right of the header
-// and moving navigation links next to the logo
-
 $header-search-input-size: 35px;
 
-// Override the main header container to use flexbox for better positioning
 .app-header .govuk-header__container--full-width {
   display: flex;
   align-items: center;
-  justify-content: space-between;  // This pushes search to the right
-  flex-wrap: nowrap;  // Keep everything on one line on desktop
+  justify-content: space-between;
+  flex-wrap: nowrap;
+
+  @media (max-width: 999px) {
+    flex-wrap: wrap;
+  }
 
   @include govuk-media-query($until: tablet) {
-    flex-wrap: wrap;
     flex-direction: column;
     align-items: flex-start;
   }
 }
 
-// Group containing logo and navigation links on the left
 .header-left-group {
   display: flex;
   align-items: center;
-  flex: 0 0 auto;  // Don't grow, take only needed space
-  gap: govuk-spacing(4);
+  flex: 0 0 auto;
+  gap: govuk-spacing(2);
 
   @include govuk-media-query($until: tablet) {
     width: 100%;
@@ -31,20 +28,18 @@ $header-search-input-size: 35px;
   }
 }
 
-// Logo styling within the left group
 .header-left-group .govuk-header__logo {
   display: inline-flex;
   align-items: center;
   flex: 0 0 auto;
-  width: auto !important;  // Override the 45% width from original CSS
+  width: auto !important;
   margin: 0;
-  white-space: nowrap;  // Prevent wrapping of logo text
+  white-space: nowrap;
 }
 
-// Navigation positioning within the left group
 .header-left-group .govuk-header__content {
   flex: 0 0 auto;
-  width: auto !important;  // Override the 55% width from original CSS
+  width: auto !important;
   margin-left: 0 !important;
   display: inline-flex;
   align-items: center;
@@ -56,18 +51,20 @@ $header-search-input-size: 35px;
   }
 }
 
-// Header search styles - positioned to the right
 .header-search {
-  margin-left: auto !important;  // Force it to the right
+  margin-left: auto !important;
   flex: 0 0 auto;
   display: inline-flex;
   align-items: center;
 
-  @include govuk-media-query($until: tablet) {
+  @media (max-width: 999px) {
     width: 100%;
+    max-width: 100%;
     margin-left: 0 !important;
-    margin-top: govuk-spacing(3);
+    margin-top: 5px;
+    margin-bottom: 10px;
     display: block;
+    box-sizing: border-box;
   }
 
   @include govuk-media-query($media-type: print) {
@@ -87,15 +84,21 @@ $header-search-input-size: 35px;
 }
 
 .header-search__input {
-  width: 200px;  // Slightly smaller to fit better
+  width: 200px;
   height: $header-search-input-size;
   margin: 0;
   padding: govuk-spacing(1) govuk-spacing(2);
   border: 2px solid govuk-colour("mid-grey");
-  font-size: 16px;  // Prevent zoom on mobile
+  font-size: 16px;
 
   @include govuk-media-query($from: desktop) {
-    width: 250px;  // Wider on larger screens
+    width: 250px;
+  }
+
+  @media (max-width: 999px) {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   @include govuk-media-query($until: tablet) {
@@ -109,28 +112,22 @@ $header-search-input-size: 35px;
   }
 }
 
-// Search button removed - search input only
-
-// Adjust the header wrapper to ensure proper layout
 .app-header {
   .govuk-header__container {
     position: relative;
   }
 }
 
-// Ensure navigation stays inline with logo
 .govuk-header__navigation--end {
   justify-content: flex-start !important;
 }
 
-// Ensure the navigation list stays inline
 .govuk-header__navigation-list {
   display: flex;
   flex-wrap: nowrap;
   margin: 0;
 }
 
-// For smaller screens, ensure proper stacking
 @include govuk-media-query($until: tablet) {
   .header-left-group {
     width: 100%;
