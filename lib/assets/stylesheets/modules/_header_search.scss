@@ -10,21 +10,24 @@ $header-search-input-size: 35px;
     flex-wrap: wrap;
   }
 
-  @include govuk-media-query($until: tablet) {
+  @include govuk-media-query($until: desktop) {
     flex-direction: column;
     align-items: flex-start;
   }
 }
 
 .header-left-group {
-  display: flex;
-  align-items: center;
   flex: 0 0 auto;
-  gap: govuk-spacing(2);
 
-  @include govuk-media-query($until: tablet) {
+  @include govuk-media-query($from: desktop) {
+    display: flex;
+    align-items: center;
+    gap: govuk-spacing(2);
+  }
+
+  @include govuk-media-query($until: desktop) {
     width: 100%;
-    flex-wrap: wrap;
+    display: block;
   }
 }
 
@@ -41,12 +44,14 @@ $header-search-input-size: 35px;
   flex: 0 0 auto;
   width: auto !important;
   margin-left: 0 !important;
-  display: inline-flex;
-  align-items: center;
 
-  @include govuk-media-query($until: tablet) {
+  @include govuk-media-query($from: desktop) {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  @include govuk-media-query($until: desktop) {
     width: 100% !important;
-    margin-top: govuk-spacing(2);
     display: block;
   }
 }
@@ -65,6 +70,10 @@ $header-search-input-size: 35px;
     margin-bottom: 10px;
     display: block;
     box-sizing: border-box;
+  }
+
+  @include govuk-media-query($until: desktop) {
+    margin-top: 0;
   }
 
   @include govuk-media-query($media-type: print) {
@@ -101,7 +110,7 @@ $header-search-input-size: 35px;
     box-sizing: border-box;
   }
 
-  @include govuk-media-query($until: tablet) {
+  @include govuk-media-query($until: desktop) {
     width: 100%;
   }
 
@@ -123,12 +132,14 @@ $header-search-input-size: 35px;
 }
 
 .govuk-header__navigation-list {
-  display: flex;
-  flex-wrap: nowrap;
-  margin: 0;
+  @include govuk-media-query($from: desktop) {
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 0;
+  }
 }
 
-@include govuk-media-query($until: tablet) {
+@include govuk-media-query($until: desktop) {
   .header-left-group {
     width: 100%;
 
