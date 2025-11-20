@@ -1,5 +1,3 @@
-$header-search-input-size: 35px;
-
 .app-header .govuk-header__container--full-width {
   display: flex;
   align-items: center;
@@ -92,13 +90,11 @@ $header-search-input-size: 35px;
   @extend .govuk-visually-hidden;
 }
 
-.header-search__input {
+.header-search__wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
   width: 200px;
-  height: $header-search-input-size;
-  margin: 0;
-  padding: govuk-spacing(1) govuk-spacing(2);
-  border: 2px solid govuk-colour("mid-grey");
-  font-size: 16px;
 
   @include govuk-media-query($from: desktop) {
     width: 250px;
@@ -113,6 +109,32 @@ $header-search-input-size: 35px;
   @include govuk-media-query($until: desktop) {
     width: 100%;
   }
+}
+
+.header-search__icon {
+  position: absolute;
+  background-position: center left -2px;
+  width: 40px;
+  height: 40px;
+  z-index: 1;
+  pointer-events: none;
+
+  svg {
+    width: 100%;
+    height: 100%;
+    fill: govuk-colour("mid-grey");
+  }
+}
+
+.header-search__input {
+  width: 100%;
+  height: 40px;
+  margin: 0;
+  padding: govuk-spacing(1) govuk-spacing(2);
+  padding-left: 36px;
+  border: none;
+  font-size: 16px;
+  box-sizing: border-box;
 
   &:focus {
     outline: $govuk-focus-width solid $govuk-focus-colour;
