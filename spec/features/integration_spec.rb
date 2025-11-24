@@ -59,7 +59,7 @@ RSpec.describe "The tech docs template" do
   end
 
   def then_there_is_a_search_form
-    expect(page).to have_css "input#search"
+    expect(page).to have_css "input#header-search"
   end
 
   def then_there_is_a_sidebar
