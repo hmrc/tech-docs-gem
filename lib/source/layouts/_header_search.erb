@@ -1,0 +1,20 @@
+<% if config[:tech_docs][:enable_search] %>
+<div class="header-search" data-module="search" data-path-to-site-root="<%= path_to_site_root config, current_page.path %>">
+  <form action="https://www.google.co.uk/search" method="get" role="search" class="header-search__form">
+    <input type="hidden" name="as_sitesearch" value="<%= config[:tech_docs][:host] %>"/>
+    <label class="govuk-label header-search__label" for="header-search">
+      Search (via Google)
+    </label>
+    <div class="header-search__wrapper">
+      <img src="<%= path_to_site_root config, current_page.path %>images/search.svg" class="header-search__icon" alt="Search">
+      <input
+        type="search"
+        id="header-search"
+        name="q"
+        class="govuk-input header-search__input"
+        aria-controls="search-results"
+        placeholder="Search <%= config[:tech_docs][:service_name] %>">
+    </div>
+  </form>
+</div>
+<% end %>

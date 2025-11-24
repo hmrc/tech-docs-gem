@@ -69,7 +69,7 @@
         <% if content_for? :sidebar %>
           <div class="app-pane__toc">
             <div class="toc" data-module="table-of-contents" tabindex="-1">
-              <%= partial "layouts/search" %>
+              <%#= partial "layouts/search" %>
               <button type="button" class="toc__close js-toc-close" aria-controls="toc" aria-label="Hide table of contents"></button>
               <nav id="toc" class="js-toc-list toc__list" aria-labelledby="toc-heading"<%= " data-module=\"collapsible-navigation\"" if config[:tech_docs][:collapsible_nav] %>>
                 <%= yield_content :sidebar %>
