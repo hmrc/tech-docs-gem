@@ -33,7 +33,7 @@ module GovukTechDocs
 
       # Slack URLs don't have the # (channels) or @ (usernames)
       slack_identifier = owner_slack.to_s.delete("#").delete("@")
-      "https://#{owner_slack_workspace}.slack.com/messages/#{slack_identifier}"
+      "https://#{owner_slack_workspace}.slack.com/channels/#{slack_identifier}"
     end
 
     def show_expiry?

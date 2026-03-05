@@ -26,7 +26,7 @@ RSpec.describe GovukTechDocs::PageReview do
         tech_docs: { owner_slack_workspace: "govuk" },
       )
 
-      expect(review_by.owner_slack_url).to eql("https://govuk.slack.com/messages/foo")
+      expect(review_by.owner_slack_url).to eql("https://govuk.slack.com/channels/foo")
     end
 
     it "links to Slack channels" do
@@ -35,7 +35,7 @@ RSpec.describe GovukTechDocs::PageReview do
         tech_docs: { owner_slack_workspace: "govuk" },
       )
 
-      expect(review_by.owner_slack_url).to eql("https://govuk.slack.com/messages/foo")
+      expect(review_by.owner_slack_url).to eql("https://govuk.slack.com/channels/foo")
     end
   end
 
